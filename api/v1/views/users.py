@@ -63,7 +63,7 @@ def update_user(user_id):
     """ Delete a State object """
     if not request.is_json:
         abort(400, "Not a JSON")
-    estado = storage.get('State', user_id)
+    estado = storage.get('User', user_id)
     if estado:
         datos = request.get_json()
         if type(datos) is dict:
