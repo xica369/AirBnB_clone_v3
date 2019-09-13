@@ -45,8 +45,10 @@ def create_user():
     """ Creatte a State object """
     if not request.is_json:
         abort(400, "Not a JSON")
-    if 'name' not in request.json:
-        abort(400, "Missing name")
+    if 'email' not in request.json:
+        abort(400, "Missing email")
+    if 'password' not in request.json:
+        abort(400, "Missing password")
     datos = request.get_json()
     estado = User(**datos)
     storage.new(estado)
@@ -65,7 +67,7 @@ def update_user(user_id):
     if estado:
         datos = request.get_json()
         if type(datos) is dict:
-            omitir = ['id', 'created_at', 'updated_at']
+            omitir = ['id', 'email', 'created_at', 'updated_at']
             for name, value in datos.items():
                 if name not in omitir:
                     setattr(estado, name, value)
