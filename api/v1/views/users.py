@@ -14,7 +14,7 @@ def get_users():
     users_list = []
     for key, value in storage.all("User").items():
         users_list.append(value.to_dict())
-    return jsonify(states_list)
+    return jsonify(users_list)
 
 
 @app_views.route("/users/<user_id>", methods=['GET'], strict_slashes=False)
