@@ -64,7 +64,7 @@ def create_place(city_id):
     if usuario is None:
         abort(404)
     objeto = Place(**datos)
-    storage.new(objeto)
+    objeto.city_id = city_id
     storage.save()
     respuesta = jsonify(objeto.to_dict())
     respuesta.status_code = 201
